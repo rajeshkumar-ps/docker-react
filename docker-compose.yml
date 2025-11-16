@@ -9,3 +9,11 @@ services:
     volumes:
       - /app/node_modules #refer to node_modules in container
       - .:/app # Mounts the current directory to /app in the container
+  test:
+    build:  
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
+    command: ["npm","run","test"]
